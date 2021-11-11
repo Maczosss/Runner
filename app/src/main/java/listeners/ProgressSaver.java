@@ -24,7 +24,7 @@ public class ProgressSaver {
 
     public ProgressSaver(String path) {
         this.path = path;
-        this.saveFile = new File(path + "/saveFile");
+        this.saveFile = new File(path + "/saveFile.txt");
         if (saveFile.exists()) {
             try {
                 FileReader fr = new FileReader(saveFile);
@@ -58,12 +58,13 @@ public class ProgressSaver {
                 .filter(e -> e.getWeekNumber() == week).findFirst();
     }
 
-    public void saveProgressInSaveFile(int week, int day) throws IOException {
+    private void saveProgressInSaveFile(int week, int day) throws IOException {
         saveFile.delete();
-        this.saveFile = new File(path + "/saveFile");
+        this.saveFile = new File(path + "/saveFile.txt");
         FileWriter writer = new FileWriter(saveFile);
 
         writer.write("week " + week);
+        writer.write(String.format("%n"));
         writer.write("day " + day);
         writer.flush();
         writer.close();
@@ -94,8 +95,20 @@ public class ProgressSaver {
         return instance;
     }
 
-    private ProgressSaver() {
-        // Constructor hidden because this is a singleton
+    public void saveForThisWeek(int dayNumber) {
+        try {
+            saveProgressInSaveFile(week, dayNumber);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
+    public void saveNextWeek() {
+        try {
+            week += 1;
+            saveProgressInSaveFile(week, 1);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

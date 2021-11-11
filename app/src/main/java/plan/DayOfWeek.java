@@ -18,6 +18,8 @@ public class DayOfWeek {
         return dayNumber;
     }
 
+    public void setDayNumber(int number){dayNumber = number;}
+
     public int getNumberOfIntervals() {
         return numberOfIntervals;
     }
