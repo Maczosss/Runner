@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TimerActivity">
+
+    <TextView
+        android:id="@+id/textField"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="32dp"
+        android:fontFamily="@font/open_sans_semibold"
+        android:lineHeight="32dp"
+        android:text="Tekst wspierający, do edycji"
+        android:textAlignment="center"
+        android:textColor="@color/colorDarkBlue"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/timer" />
+
+<!--    <Chronometer-->
+<!--        android:id="@+id/timer"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:fontFamily="@font/open_sans_light"-->
+<!--        android:textColor="@color/colorDarkBlue"-->
+<!--        android:textSize="64sp"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent" />-->
+
+    <TextView
+        android:id="@+id/timer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/open_sans_light"
+        android:text="00:00"
+        android:textColor="@color/colorDarkBlue"
+        android:textSize="64sp"
+        android:layout_marginBottom="300dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/startBtn"
+        android:layout_width="104dp"
+        android:layout_height="97dp"
+        android:layout_marginTop="50dp"
+        android:background="@color/white"
+        android:scaleType="fitCenter"
+        android:src="@drawable/play"
+        app:layout_constraintEnd_toStartOf="@+id/resetBtn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textField" />
+
+    <ImageButton
+        android:id="@+id/resetBtn"
+        android:layout_width="104dp"
+        android:layout_height="97dp"
+        android:layout_marginTop="50dp"
+        android:background="@color/white"
+        android:scaleType="fitCenter"
+        android:src="@drawable/pause"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/startBtn"
+        app:layout_constraintTop_toBottomOf="@+id/textField"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
