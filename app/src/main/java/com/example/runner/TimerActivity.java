@@ -24,22 +24,25 @@ import plan.DayOfWeek;
 import plan.WeeksPlan;
 
 public class TimerActivity extends AppCompatActivity {
-    //for change
-//    private static final long START_TIME_FOR_RUN_IN_MILLIS = 5000; // 1 minute sec3
-//    private static final long START_TIME_FOR_WALK_IN_MILLIS = 10000; //5 minutes sec9
-//    private int numberOfSeries = 4;
+    //for testing
+    private static final long START_TIME_FOR_RUN_IN_MILLIS = 5000; // 1 minute sec3
+    private static final long START_TIME_FOR_WALK_IN_MILLIS = 10000; //5 minutes sec9
+    private int numberOfSeries = 4;
 
     private DayOfWeek dayOfWeek =
             ProgressSaver
                     .getInstance()
                     .getWeekPlan()
                     .get()
-                    .getDay(1);
+                    .getDay(
+                            ProgressSaver
+                                    .getInstance()
+                                    .getCurrentDayOfWeek());
 
-    private final long START_TIME_FOR_RUN_IN_MILLIS = dayOfWeek.getTimeToRun(); // 1 minute sec3
-    private final long START_TIME_FOR_WALK_IN_MILLIS = dayOfWeek.getTimeToWalk(); //5 minutes sec9
-    private final int BASE_NUMBER_OF_SERIES = dayOfWeek.getNumberOfIntervals();
-    private int numberOfSeries = BASE_NUMBER_OF_SERIES * 2;//multiplayng becouse it decreased for every action, not after walk and run
+//    private final long START_TIME_FOR_RUN_IN_MILLIS = dayOfWeek.getTimeToRun(); // 1 minute sec3
+//    private final long START_TIME_FOR_WALK_IN_MILLIS = dayOfWeek.getTimeToWalk(); //5 minutes sec9
+//    private final int BASE_NUMBER_OF_SERIES = dayOfWeek.getNumberOfIntervals();
+//    private int numberOfSeries = BASE_NUMBER_OF_SERIES * 2;//multiplayng becouse it decreased for every action, not after walk and run
 
 
     private TextView timer;
@@ -110,17 +113,20 @@ public class TimerActivity extends AppCompatActivity {
                 } else {
                     activityType = ActivityType.RUN;
                 }
+                resetTimer();
                 sendNotification(
                         activityType.getType(),
                         String.format("Now You have to: %s for %s min",
                                 activityType.getType(),
                                 timer.getText().toString()));
-                resetTimer();
                 numberOfSeries--;
                 if (numberOfSeries > 0)
                     startTimer();
-                else
+                else {
                     sendNotification("Finish", "Training finished");
+                    saveProgress();
+                    resetData();
+                }
             }
         }.start();
 
@@ -128,6 +134,20 @@ public class TimerActivity extends AppCompatActivity {
         //Todo implement pausebutton change the icon
         //startBtn.setText();
         //resetBtn.setVisibility(View.INVISIBLE);
+    }
+
+    private void saveProgress() {
+        if (dayOfWeek.getDayNumber() < 3) {
+            dayOfWeek.setDayNumber(dayOfWeek.getDayNumber() + 1);
+            ProgressSaver.getInstance().saveForThisWeek(dayOfWeek.getDayNumber());
+        } else {
+            dayOfWeek.setDayNumber(1);
+            ProgressSaver.getInstance().saveNextWeek();
+        }
+    }
+
+    private void resetData() {
+//        numberOfSeries = BASE_NUMBER_OF_SERIES * 2;
     }
 
     public void updateCountDown() {
