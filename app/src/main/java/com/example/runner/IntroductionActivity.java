@@ -33,10 +33,10 @@ public class IntroductionActivity extends AppCompatActivity {
 
         lottie = findViewById(R.id.lottie);
 
-        background.animate().translationY(-3600).setDuration(1500).setStartDelay(1000);
-        name.animate().translationY(1400).setDuration(1500).setStartDelay(1000);
+        background.animate().translationY(-3600).setDuration(1500).setStartDelay(1000).alpha(0);
+        name.animate().translationY(1600).setDuration(1500).setStartDelay(1000).alpha(0);
 
-        lottie.animate().translationY(1400).setDuration(1000).setStartDelay(1000);
+        lottie.animate().translationY(1600).setDuration(1000).setStartDelay(1000).alpha(0);
 
         startBtn.animate().alpha(1).setDuration(1000).setStartDelay(1400);
         name2.animate().alpha(1).setDuration(1500).setStartDelay(1600);

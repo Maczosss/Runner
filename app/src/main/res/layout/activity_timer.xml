@@ -23,16 +23,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/timer" />
 
-<!--    <Chronometer-->
-<!--        android:id="@+id/timer"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:fontFamily="@font/open_sans_light"-->
-<!--        android:textColor="@color/colorDarkBlue"-->
-<!--        android:textSize="64sp"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent" />-->
 
     <TextView
         android:id="@+id/timer"
@@ -67,7 +57,7 @@
         android:layout_marginTop="50dp"
         android:background="@color/white"
         android:scaleType="fitCenter"
-        android:src="@drawable/pause"
+        android:src="@drawable/reset"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/startBtn"
         app:layout_constraintTop_toBottomOf="@+id/textField"/>

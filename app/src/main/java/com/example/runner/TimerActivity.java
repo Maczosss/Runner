@@ -34,7 +34,10 @@ public class TimerActivity extends AppCompatActivity {
                     .getInstance()
                     .getWeekPlan()
                     .get()
-                    .getDay(1);
+                    .getDay(
+                            ProgressSaver
+                                    .getInstance()
+                                    .getCurrentDayOfWeek());
 
 //    private final long START_TIME_FOR_RUN_IN_MILLIS = dayOfWeek.getTimeToRun(); // 1 minute sec3
 //    private final long START_TIME_FOR_WALK_IN_MILLIS = dayOfWeek.getTimeToWalk(); //5 minutes sec9
@@ -110,12 +113,12 @@ public class TimerActivity extends AppCompatActivity {
                 } else {
                     activityType = ActivityType.RUN;
                 }
+                resetTimer();
                 sendNotification(
                         activityType.getType(),
                         String.format("Now You have to: %s for %s min",
                                 activityType.getType(),
                                 timer.getText().toString()));
-                resetTimer();
                 numberOfSeries--;
                 if (numberOfSeries > 0)
                     startTimer();
