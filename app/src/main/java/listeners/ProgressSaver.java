@@ -60,12 +60,14 @@ public class ProgressSaver {
 
     private void saveProgressInSaveFile(int week, int day) throws IOException {
         saveFile.delete();
+        currentDayOfWeek = day;
+        this.week = week;
         this.saveFile = new File(path + "/saveFile.txt");
         FileWriter writer = new FileWriter(saveFile);
 
-        writer.write("week " + week);
+        writer.write("week " + this.week);
         writer.write(String.format("%n"));
-        writer.write("day " + day);
+        writer.write("day " + currentDayOfWeek);
         writer.flush();
         writer.close();
     }
@@ -81,6 +83,14 @@ public class ProgressSaver {
 
     public int getWeek() {
         return week;
+    }
+
+    public void setWeek(int week) {
+        this.week = week;
+    }
+
+    public void setCurrentDayOfWeek(int currentDayOfWeek) {
+        this.currentDayOfWeek = currentDayOfWeek;
     }
 
     public static void initInstance(String path) {

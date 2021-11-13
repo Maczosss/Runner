@@ -4,12 +4,18 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Sandbox/Runner/app/src/main/res/layout/a_scene.xml" value="0.25416666666666665" />
-        <entry key="..\:/Sandbox/Runner/app/src/main/res/layout/activity_introduction.xml" value="0.152" />
+        <entry key="..\:/Sandbox/Runner/app/src/main/res/layout/activity_introduction.xml" value="0.136" />
         <entry key="..\:/Sandbox/Runner/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/Sandbox/Runner/app/src/main/res/layout/activity_test.xml" value="0.25416666666666665" />
         <entry key="..\:/Sandbox/Runner/app/src/main/res/layout/activity_timer.xml" value="0.17527173913043478" />
         <entry key="..\:/Sandbox/Runner/app/src/main/res/layout/another_scene.xml" value="0.25416666666666665" />
         <entry key="..\:/Sandbox/Runner/app/src/main/res/layout/button_scene.xml" value="0.25416666666666665" />
+        <entry key="..\:/Sandbox/Runner/app/src/main/res/layout/fragment_item.xml" value="0.13020833333333334" />
+        <entry key="..\:/Sandbox/Runner/app/src/main/res/layout/fragment_item_list.xml" value="0.11614583333333334" />
+        <entry key="..\:/Sandbox/Runner/app/src/main/res/layout/fragment_scrolling.xml" value="0.2" />
+        <entry key="..\:/Sandbox/Runner/app/src/main/res/layout/fragment_week_plan_list.xml" value="0.13020833333333334" />
+        <entry key="..\:/Sandbox/Runner/app/src/main/res/layout/fragment_work_pklan_item.xml" value="0.264" />
+        <entry key="..\:/Sandbox/Runner/app/src/main/res/layout/fragment_work_plan_item_list.xml" value="0.11614583333333334" />
       </map>
     </option>
   </component>
