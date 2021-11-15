@@ -2,7 +2,6 @@ package com.example.runner;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -10,9 +9,11 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 import com.airbnb.lottie.LottieAnimationView;
 
+import fragments.WeekPlanListFragment;
 import listeners.ProgressSaver;
 import plan.WeeksPlan;
 
@@ -27,6 +28,11 @@ public class IntroductionActivity extends AppCompatActivity {
     WeeksPlan[] plan = WeeksPlan.values();
     ListView listOfPlans;
 
+    Fragment fragment;
+
+    private static final int CONTENT_VIEW_ID = 10101010;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +46,11 @@ public class IntroductionActivity extends AppCompatActivity {
         infoAboutCurrentWorkout = findViewById(R.id.textFieldIntroductionInformation);
 
         //=============================
+
+
+
+
+        //============================
         listOfPlans = findViewById(R.id.list);
 
         String[] test = {
@@ -73,11 +84,25 @@ public class IntroductionActivity extends AppCompatActivity {
         });
 
         chooseBtn.setOnClickListener(v->{
-            listOfPlans.setVisibility(View.VISIBLE);
+//            listOfPlans.setVisibility(View.VISIBLE);
+//            FragmentManager fm = getSupportFragmentManager();
+//            fragment = fm.findFragmentByTag("myFragmentTag");
+//            if (fragment == null) {
+//                FragmentTransaction ft = fm.beginTransaction();
+//                fragment =new WeekPlanListFragment();
+//                ft.add(android.R.id.content,fragment,"myFragmentTag");
+//                ft.commit();
+//            }
+
+            Intent intent;
+            intent = new Intent(getApplicationContext(), WeekPlanListFragment.class);
+            startActivity(intent);
         });
 
         lottie = findViewById(R.id.lottie);
 
+
+        //animations
         background.animate().translationY(-3600).setDuration(1500).setStartDelay(1000).alpha(0);
         name.animate().translationY(1600).setDuration(1500).setStartDelay(1000).alpha(0);
 

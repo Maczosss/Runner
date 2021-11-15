@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Devtools/AndroidSDK/platforms/android-30/data/res/layout/auto_complete_list.xml" value="0.25416666666666665" />
         <entry key="..\:/Sandbox/Runner/app/src/main/res/layout/a_scene.xml" value="0.25416666666666665" />
         <entry key="..\:/Sandbox/Runner/app/src/main/res/layout/activity_introduction.xml" value="0.136" />
         <entry key="..\:/Sandbox/Runner/app/src/main/res/layout/activity_main.xml" value="0.2" />
@@ -16,6 +17,7 @@
         <entry key="..\:/Sandbox/Runner/app/src/main/res/layout/fragment_week_plan_list.xml" value="0.13020833333333334" />
         <entry key="..\:/Sandbox/Runner/app/src/main/res/layout/fragment_work_pklan_item.xml" value="0.264" />
         <entry key="..\:/Sandbox/Runner/app/src/main/res/layout/fragment_work_plan_item_list.xml" value="0.11614583333333334" />
+        <entry key="..\:/Sandbox/Runner/app/src/main/res/layout/single_list_item.xml" value="0.264" />
       </map>
     </option>
   </component>

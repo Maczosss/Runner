@@ -11,17 +11,17 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.runner.R;
 
-import java.io.File;
-
-import plan.WeeksPlan;
+import fragments.WeekPlanListFragment;
 
 public class WeekPlanListAdapter extends RecyclerView.Adapter<WeekPlanListAdapter.WeekPlanViewHolder> {
 
-    private WeeksPlan[] allFiles;
+    //    private WeeksPlan[] allFiles;
+    private WeekPlanListFragment.ListItem[] allItems;
+
     private onItemListClick onItemListClick;
 
-    public WeekPlanListAdapter(WeeksPlan[] allFiles, onItemListClick onItemListClick) {
-        this.allFiles = allFiles;
+    public WeekPlanListAdapter(WeekPlanListFragment.ListItem[] allItems, onItemListClick onItemListClick) {
+        this.allItems = allItems;
         this.onItemListClick = onItemListClick;
     }
 
@@ -34,38 +34,39 @@ public class WeekPlanListAdapter extends RecyclerView.Adapter<WeekPlanListAdapte
 
     @Override
     public void onBindViewHolder(@NonNull WeekPlanViewHolder holder, int position) {
-        holder.list_title.setText(allFiles[position].getName());
-        holder.list_date.setText(timeAgo.getTimeAgo(allFiles[position].lastModified()));
+        holder.week.setText(String.valueOf(allItems[position].getWeekNumber()));
+        holder.week_day.setText(String.valueOf(allItems[position].getDayNumber()));
+        holder.specification.setText(allItems[position].getSpecification());
     }
 
     @Override
     public int getItemCount() {
-        return allFiles.length;
+        return allItems.length;
     }
 
     public class WeekPlanViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         private ImageView list_image;
-        private TextView list_title;
-        private TextView list_date;
+        private TextView week, week_day, specification;
 
         public WeekPlanViewHolder(@NonNull View itemView) {
             super(itemView);
 
             list_image = itemView.findViewById(R.id.list_image_view);
-            list_title = itemView.findViewById(R.id.list_title);
-            list_date = itemView.findViewById(R.id.list_date);
+            week = itemView.findViewById(R.id.week);
+            week_day = itemView.findViewById(R.id.week_day);
+            specification = itemView.findViewById(R.id.specification);
 
             itemView.setOnClickListener(this);
         }
 
         @Override
         public void onClick(View v) {
-            onItemListClick.onClickListener(allFiles[getAdapterPosition()], getAdapterPosition());
+            onItemListClick.onClickListener(allItems[getBindingAdapterPosition()], getBindingAdapterPosition());
         }
     }
 
     public interface onItemListClick {
-        void onClickListener(File file, int position);
+        void onClickListener(WeekPlanListFragment.ListItem item, int position);
     }
 }

@@ -1,68 +1,104 @@
 package fragments;
 
-import android.media.MediaPlayer;
+import android.app.Activity;
 import android.os.Bundle;
-import android.os.Handler;
-import android.view.View;
-import android.widget.SeekBar;
 
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
+import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.runner.R;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import adapter.WeekPlanListAdapter;
 import listeners.ProgressSaver;
 import plan.WeeksPlan;
 
-import com.example.runner.R;
-import com.google.android.material.bottomsheet.BottomSheetBehavior;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
-
-
-
-public class WeekPlanListFragment extends Fragment implements WeekPlanListAdapter.onItemListClick {
+public class WeekPlanListFragment extends Activity implements WeekPlanListAdapter.onItemListClick {
 
     //TODO previous and next buttons on mediaplayer
 
     private RecyclerView audioList;
     private Map<ListItem, Integer> newAllWeeksPlans = new HashMap<>();
+    private List<ListItem> listItems = new ArrayList<>();
     private WeeksPlan[] allWeeksPlans;
     int id = 0;
 
 
     private WeekPlanListAdapter weekPlanListAdapter;
 
-
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getActivity().setContentView(R.layout.activity_audio_list);
+        setContentView(R.layout.fragment_item_list);
 
-//        playerSheet = findViewById(R.id.player_sheet);
-//        bottomSheetBehavior = BottomSheetBehavior.from(playerSheet);
-        audioList = findViewById(R.id.audio_list_view);
+        audioList = findViewById(R.id.item_list_view);
 
         allWeeksPlans = WeeksPlan.values();
 
+
         for (WeeksPlan file : allWeeksPlans) {
-            ProgressSaver saver = ProgressSaver.getInstance();
-            ListItem item = new ListItem(saver.getWeek(), saver.getCurrentDayOfWeek());
+            ListItem item = new ListItem(file.getWeekNumber(), file.getDay1().getDayNumber());
+            ListItem item2 = new ListItem(file.getWeekNumber(), file.getDay2().getDayNumber());
+            ListItem item3 = new ListItem(file.getWeekNumber(), file.getDay3().getDayNumber());
+
             newAllWeeksPlans.put(item, id);
+            listItems.add(item);
+            id++;
+            newAllWeeksPlans.put(item2, id);
+            listItems.add(item2);
+            id++;
+            newAllWeeksPlans.put(item3, id);
+            listItems.add(item3);
             id++;
         }
+        //todo solve this workaround
+        ListItem[] temp = new ListItem[listItems.size()];
 
-        weekPlanListAdapter = new WeekPlanListAdapter(allWeeksPlans, this);
+        temp = listItems.toArray(new ListItem[0]);
+
+        weekPlanListAdapter = new WeekPlanListAdapter(temp, this);
 
         audioList.setHasFixedSize(true);
-        audioList.setLayoutManager(new LinearLayoutManager(getContext()));
+        audioList.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         audioList.setAdapter(weekPlanListAdapter);
-
     }
+
+//    @Override
+//    public void onCreate(Bundle savedInstanceState) {
+//        super.onCreate(savedInstanceState);
+//        getActivity().setContentView(R.layout.fragment_item_list);
+//
+////        playerSheet = findViewById(R.id.player_sheet);
+////        bottomSheetBehavior = BottomSheetBehavior.from(playerSheet);
+//        audioList = findViewById(R.id.item_list_view);
+//
+//        allWeeksPlans = WeeksPlan.values();
+//
+//        ListItem[] temp;
+//
+//        for (WeeksPlan file : allWeeksPlans) {
+//            ProgressSaver saver = ProgressSaver.getInstance();
+//            ListItem item = new ListItem(saver.getWeek(), saver.getCurrentDayOfWeek());
+//            newAllWeeksPlans.put(item, id);
+//            listItems.add(item);
+//            id++;
+//        }
+//        //todo solve this workaround
+//        temp = (ListItem[]) listItems.toArray();
+//
+//        weekPlanListAdapter = new WeekPlanListAdapter(temp, this);
+//
+//        audioList.setHasFixedSize(true);
+//        audioList.setLayoutManager(new LinearLayoutManager(getContext()));
+//        audioList.setAdapter(weekPlanListAdapter);
+//
+//    }
 
 
     @Override
@@ -83,8 +119,7 @@ public class WeekPlanListFragment extends Fragment implements WeekPlanListAdapte
 //    }
 
 
-
-    protected class ListItem{
+    public class ListItem {
         private int weekNumber;
         private int dayNumber;
 
@@ -107,6 +142,11 @@ public class WeekPlanListFragment extends Fragment implements WeekPlanListAdapte
 
         public void setDayNumber(int dayNumber) {
             this.dayNumber = dayNumber;
+        }
+
+        //todo add specification for every day
+        public String getSpecification() {
+            return "Specification would be added";
         }
     }
 }
