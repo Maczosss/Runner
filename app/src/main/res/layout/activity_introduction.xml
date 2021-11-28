@@ -60,60 +60,60 @@
         app:layout_constraintVertical_bias=".1"
         />
 
-    <Button
-        android:id="@+id/startBtn"
-        android:elevation="2dp"
-        android:layout_width="120dp"
-        android:layout_height="80dp"
-        android:text="Start running"
-        android:alpha="0"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/chooseBtn"/>
+<!--    <Button-->
+<!--        android:id="@+id/startBtn"-->
+<!--        android:elevation="2dp"-->
+<!--        android:layout_width="120dp"-->
+<!--        android:layout_height="80dp"-->
+<!--        android:text="Start running"-->
+<!--        android:alpha="0"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintEnd_toStartOf="@id/chooseBtn"/>-->
 
-    <Button
-        android:id="@+id/chooseBtn"
-        android:elevation="2dp"
-        android:layout_width="120dp"
-        android:layout_height="80dp"
-        android:text="Choose day"
-        android:alpha="0"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/startBtn"
-        app:layout_constraintTop_toTopOf="parent" />
+<!--    <Button-->
+<!--        android:id="@+id/chooseBtn"-->
+<!--        android:elevation="2dp"-->
+<!--        android:layout_width="120dp"-->
+<!--        android:layout_height="80dp"-->
+<!--        android:text="Choose day"-->
+<!--        android:alpha="0"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/startBtn"-->
+<!--        app:layout_constraintTop_toTopOf="parent" />-->
 
-    <TextView
-        android:id="@+id/textFieldIntroductionInformation"
-        android:elevation="2dp"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
-        android:fontFamily="@font/open_sans_semibold"
-        android:lineHeight="32dp"
-        android:alpha="0"
-        android:translationY="1500dp"
-        android:textAlignment="center"
-        android:textColor="@color/menuRed"
-        android:textSize="15sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lottie" />
+<!--    <TextView-->
+<!--        android:id="@+id/textFieldIntroductionInformation"-->
+<!--        android:elevation="2dp"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="32dp"-->
+<!--        android:layout_marginEnd="32dp"-->
+<!--        android:fontFamily="@font/open_sans_semibold"-->
+<!--        android:lineHeight="32dp"-->
+<!--        android:alpha="0"-->
+<!--        android:translationY="1500dp"-->
+<!--        android:textAlignment="center"-->
+<!--        android:textColor="@color/menuRed"-->
+<!--        android:textSize="15sp"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/lottie" />-->
 
 
-    <ListView
-        android:id="@+id/list"
-        android:elevation="2dp"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/backgroundIntroduction"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lottie" />
+<!--    <ListView-->
+<!--        android:id="@+id/list"-->
+<!--        android:elevation="2dp"-->
+<!--        android:layout_width="300dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:visibility="invisible"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="@+id/backgroundIntroduction"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/lottie" />-->
 
         <com.cuberto.liquid_swipe.LiquidPager
             android:id="@+id/liquid_pager"
