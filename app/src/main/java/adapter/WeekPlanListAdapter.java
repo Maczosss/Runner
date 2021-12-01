@@ -15,9 +15,7 @@ import fragments.WeekPlanListFragment;
 
 public class WeekPlanListAdapter extends RecyclerView.Adapter<WeekPlanListAdapter.WeekPlanViewHolder> {
 
-    //    private WeeksPlan[] allFiles;
     private WeekPlanListFragment.ListItem[] allItems;
-
     private onItemListClick onItemListClick;
 
     public WeekPlanListAdapter(WeekPlanListFragment.ListItem[] allItems, onItemListClick onItemListClick) {
@@ -34,8 +32,8 @@ public class WeekPlanListAdapter extends RecyclerView.Adapter<WeekPlanListAdapte
 
     @Override
     public void onBindViewHolder(@NonNull WeekPlanViewHolder holder, int position) {
-        holder.week.setText(String.valueOf(allItems[position].getWeekNumber()));
-        holder.week_day.setText(String.valueOf(allItems[position].getDayNumber()));
+        holder.week.setText(String.valueOf("Week: " + allItems[position].getWeekNumber()));
+        holder.week_day.setText(String.valueOf("Day: " + allItems[position].getDayNumber()));
         holder.specification.setText(allItems[position].getSpecification());
     }
 

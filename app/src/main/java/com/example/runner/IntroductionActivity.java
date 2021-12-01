@@ -17,8 +17,8 @@ import androidx.viewpager.widget.ViewPager;
 import com.airbnb.lottie.LottieAnimationView;
 
 import fragments.FirstFragment;
-import fragments.SecondFragment;
 import fragments.ThirdFragment;
+import fragments.WeekPlanListFragment;
 import listeners.ProgressSaver;
 import plan.WeeksPlan;
 
@@ -69,38 +69,7 @@ public class IntroductionActivity extends AppCompatActivity {
         //todo animation is next
         //animation = AnimationUtils.loadAnimation(this, R.anim.animation);
 
-        //=============================
 
-
-
-
-        //============================
-//        listOfPlans = findViewById(R.id.list);
-
-//        String[] test = {
-//                "Maciej",
-//                "Sraciej",
-//                "Kutaciej",
-//        };
-//
-//        ArrayAdapter<String> arr;
-//        arr
-//                = new ArrayAdapter<String>(
-//                this,
-//                R.layout.support_simple_spinner_dropdown_item,
-//                test);
-//        listOfPlans.setAdapter(arr);
-
-        //=====================
-
-//        if(saver.getCurrentDayOfWeek()!=1 && saver.getWeek()!=1) {
-//            infoAboutCurrentWorkout.setText(String.format("You are on week: %d, and day: %d",
-//                    ProgressSaver.getInstance().getWeek(),
-//                    ProgressSaver.getInstance().getCurrentDayOfWeek()));
-//        }else{
-//            infoAboutCurrentWorkout.setText("Lets go running, start from beginning \n" +
-//                    " or choose starting day");
-//        }
 
 
 //        startBtn.setOnClickListener(v -> {
@@ -147,7 +116,6 @@ public class IntroductionActivity extends AppCompatActivity {
     //todo get rid of depricated interface
     private class ScreenSlideAdapter extends FragmentStatePagerAdapter {
 
-
         public ScreenSlideAdapter(@NonNull FragmentManager fm) {
             super(fm);
         }
@@ -160,7 +128,8 @@ public class IntroductionActivity extends AppCompatActivity {
                     FirstFragment tab1 = new FirstFragment();
                     return tab1;
                 case 1:
-                    SecondFragment tab2 = new SecondFragment();
+//                    SecondFragment tab2 = new SecondFragment();
+                    WeekPlanListFragment tab2 = new WeekPlanListFragment();
                     return tab2;
                 case 2:
                     ThirdFragment tab3 = new ThirdFragment();

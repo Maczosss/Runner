@@ -2,12 +2,14 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="@color/recycler_background"
+    android:hapticFeedbackEnabled="true">
 
     <ImageView
         android:id="@+id/list_image_view"
-        android:layout_width="65dp"
-        android:layout_height="50dp"
+        android:layout_width="23dp"
+        android:layout_height="30dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"
@@ -32,7 +34,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:fontFamily="@font/open_sans"
+        android:fontFamily="@font/open_sans_semibold"
         android:text="Day of the week"
         app:layout_constraintTop_toBottomOf="@+id/week"
         app:layout_constraintBottom_toBottomOf="@+id/list_image_view"
@@ -40,10 +42,13 @@
 
     <TextView
         android:id="@+id/specification"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/open_sans"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginRight="30dp"
+        android:fontFamily="@font/open_sans_semibold"
+        android:layout_marginLeft="5dp"
         android:text="specification"
+        android:justificationMode="inter_word"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/week"

@@ -24,7 +24,11 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
         android:elevation="3dp"
-        android:shadowColor="@color/black"
+        android:shadowColor="@color/menuRed"
+        android:shadowDx="0"
+        android:shadowDy="0"
+        android:shadowRadius="24"
+
         android:text="Runner"
         android:textColor="@color/black"
         android:textSize="50sp"
