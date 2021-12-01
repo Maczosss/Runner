@@ -6,23 +6,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/teal_200">
 
+
     <TextView
+        android:id="@+id/listTextname"
+        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="80dp"
-
-        android:id="@+id/listTextname"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
         android:fontFamily="@font/open_sans_semibold"
         android:lineHeight="32dp"
-        android:text="Choose from which day of week You would like to start running"
-        android:textAlignment="center"
+        android:text="From which day would You like to start?"
         android:textColor="@color/colorDarkBlue"
-        android:textSize="20sp"
+        android:textSize="17sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        />
-
+        app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/item_list_view"

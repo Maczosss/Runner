@@ -50,9 +50,24 @@ public class WeekPlanListFragment extends Fragment implements WeekPlanListAdapte
 
 
         for (WeeksPlan file : allWeeksPlans) {
-            ListItem item = new ListItem(file.getWeekNumber(), file.getDay1().getDayNumber(), file.getDay1().getSpecification());
-            ListItem item2 = new ListItem(file.getWeekNumber(), file.getDay2().getDayNumber(), file.getDay2().getSpecification());
-            ListItem item3 = new ListItem(file.getWeekNumber(), file.getDay3().getDayNumber(), file.getDay3().getSpecification());
+            ListItem item = new ListItem(
+                    file.getWeekNumber(),
+                    file.getDay1().getDayNumber(),
+                    file.getDay1().getNumberOfIntervals(),
+                    file.getDay1().getTimeToWalkInMinutes(),
+                    file.getDay1().getTimeToRun());
+            ListItem item2 = new ListItem(
+                    file.getWeekNumber(),
+                    file.getDay2().getDayNumber(),
+                    file.getDay2().getNumberOfIntervals(),
+                    file.getDay2().getTimeToWalkInMinutes(),
+                    file.getDay2().getTimeToRun());
+            ListItem item3 = new ListItem(
+                    file.getWeekNumber(),
+                    file.getDay3().getDayNumber(),
+                    file.getDay3().getNumberOfIntervals(),
+                    file.getDay3().getTimeToWalkInMinutes(),
+                    file.getDay3().getTimeToRun());
 
             newAllWeeksPlans.put(item, id);
             listItems.add(item);
@@ -93,6 +108,8 @@ public class WeekPlanListFragment extends Fragment implements WeekPlanListAdapte
     public class ListItem {
         private int weekNumber;
         private int dayNumber;
+        private int intervals;
+        private float timeToWalk, timeToRun;
         private String specification;
 
         public ListItem(int weekNumber, int dayNumber) {
@@ -104,6 +121,14 @@ public class WeekPlanListFragment extends Fragment implements WeekPlanListAdapte
             this.weekNumber = weekNumber;
             this.dayNumber = dayNumber;
             this.specification = specification;
+        }
+
+        public ListItem(int weekNumber, int dayNumber, int intervals, float timeToWalk, float timeToRun) {
+            this.weekNumber = weekNumber;
+            this.dayNumber = dayNumber;
+            this.intervals = intervals;
+            this.timeToWalk = timeToWalk;
+            this.timeToRun = timeToRun;
         }
 
         public int getWeekNumber() {
@@ -120,6 +145,18 @@ public class WeekPlanListFragment extends Fragment implements WeekPlanListAdapte
 
         public void setDayNumber(int dayNumber) {
             this.dayNumber = dayNumber;
+        }
+
+        public int getIntervals() {
+            return intervals;
+        }
+
+        public float getTimeToWalk() {
+            return timeToWalk;
+        }
+
+        public float getTimeToRun() {
+            return timeToRun;
         }
 
         public String getSpecification() {

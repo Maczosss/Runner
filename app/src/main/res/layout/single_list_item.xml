@@ -27,7 +27,7 @@
         android:text="Week"
         android:textSize="16sp"
         app:layout_constraintStart_toEndOf="@+id/list_image_view"
-        app:layout_constraintTop_toTopOf="@+id/list_image_view" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/week_day"
@@ -36,22 +36,47 @@
         android:layout_marginStart="16dp"
         android:fontFamily="@font/open_sans_semibold"
         android:text="Day of the week"
-        app:layout_constraintTop_toBottomOf="@+id/week"
-        app:layout_constraintBottom_toBottomOf="@+id/list_image_view"
-        app:layout_constraintStart_toEndOf="@+id/list_image_view" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/list_image_view"
+        app:layout_constraintTop_toBottomOf="@+id/week" />
 
     <TextView
-        android:id="@+id/specification"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginRight="30dp"
-        android:fontFamily="@font/open_sans_semibold"
-        android:layout_marginLeft="5dp"
-        android:text="specification"
-        android:justificationMode="inter_word"
+        android:id="@+id/intervals"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/open_sans"
+        android:layout_marginStart="20dp"
+        android:text="intervals"
+        android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/timeToRun"
         app:layout_constraintStart_toEndOf="@+id/week"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/timeToRun"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/open_sans"
+        android:text="time to run"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/timeToWalk"
+        app:layout_constraintStart_toEndOf="@+id/intervals"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/timeToWalk"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:fontFamily="@font/open_sans"
+        android:text="time to walk"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/timeToRun"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
