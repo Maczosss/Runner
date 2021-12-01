@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,13 +22,13 @@ import java.util.Locale;
 
 import listeners.ProgressSaver;
 import plan.DayOfWeek;
-import plan.WeeksPlan;
 
 public class TimerActivity extends AppCompatActivity {
     //for testing
-    private static final long START_TIME_FOR_RUN_IN_MILLIS = 5000; // 1 minute sec3
-    private static final long START_TIME_FOR_WALK_IN_MILLIS = 10000; //5 minutes sec9
+    private static final long START_TIME_FOR_RUN_IN_MILLIS = 5000; // 5 seconds sec3
+    private static final long START_TIME_FOR_WALK_IN_MILLIS = 10000; //10 seconds sec9
     private int numberOfSeries = 4;
+    //
 
     private DayOfWeek dayOfWeek =
             ProgressSaver
@@ -71,6 +72,10 @@ public class TimerActivity extends AppCompatActivity {
         this.textView = findViewById(R.id.textField);
         this.resetBtn = findViewById(R.id.resetBtn);
 
+        textView.setText("Number of intervals: " + numberOfSeries
+                + "\nrunning for: " + (START_TIME_FOR_RUN_IN_MILLIS / 1000) / 60
+                + "\nwalking time: " + (START_TIME_FOR_WALK_IN_MILLIS / 1000) % 60);
+
         startBtn.setOnClickListener(v -> {
             if (timerCounting) {
                 pauseTimer();
@@ -88,7 +93,11 @@ public class TimerActivity extends AppCompatActivity {
 
         resetBtn.setOnClickListener(v -> {
 //            sendNotification("","");
-            resetTimer();
+            if (timerCounting) {
+                Toast.makeText(this, "First, pause the counter", Toast.LENGTH_LONG).show();
+            } else {
+                resetTimer();
+            }
         });
 
         updateCountDown();

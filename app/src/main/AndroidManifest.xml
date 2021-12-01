@@ -13,6 +13,7 @@
             android:name=".IntroductionActivity"
             android:exported="false" />
         <activity android:name=".TimerActivity" />
+        <activity android:name="fragments.WeekPlanListFragment"/>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

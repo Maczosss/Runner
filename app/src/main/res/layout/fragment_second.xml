@@ -1,0 +1,90 @@
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="fragments.SecondFragment"
+    android:background="@color/teal_200">
+
+    <ImageView
+        android:id="@+id/first_fragment_text"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:src="@drawable/play"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.3" />
+
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:elevation="3dp"
+        android:shadowColor="@color/black"
+        android:text="Runner"
+        android:textColor="@color/menuRed"
+        android:textSize="50sp"
+        android:textStyle="bold"
+        android:layout_marginRight="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/first_fragment_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toStartOf="@+id/first_fragment_text"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/firstFragmentMaintext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:elevation="3dp"
+        android:layout_marginTop="40dp"
+        android:shadowColor="@color/black"
+        android:text="Lets start running ;)"
+        android:textColor="@color/menuRed"
+        android:textSize="35sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintVertical_bias="0"
+        app:layout_constraintStart_toStartOf="@+id/first_fragment_text"
+        app:layout_constraintTop_toBottomOf="@+id/first_fragment_text" />
+
+    <TextView
+        android:id="@+id/firstFragmentSecondText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:elevation="20sp"
+        android:shadowColor="@color/black"
+        android:text="First"
+        android:layout_marginTop="20dp"
+        android:textColor="@color/grey"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/firstFragmentMaintext"
+        app:layout_constraintTop_toBottomOf="@+id/firstFragmentMaintext"
+        android:autoSizeMaxTextSize="20dp"/>
+
+    <Button
+        android:id="@+id/fragmentStartBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/firstFragmentMaintext"
+        app:layout_constraintTop_toBottomOf="@+id/firstFragmentSecondText"
+        app:layout_constraintHorizontal_bias="0"
+        android:text="Run"
+        />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
