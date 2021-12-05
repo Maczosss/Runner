@@ -4,11 +4,13 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Devtools/AndroidSDK/platforms/android-30/data/res/layout/auto_complete_list.xml" value="0.25416666666666665" />
+        <entry key="..\:/Sandbox/Runner/app/src/main/res/drawable/round_button.xml" value="0.17916666666666667" />
+        <entry key="..\:/Sandbox/Runner/app/src/main/res/drawable/round_button_selected_red.xml" value="0.17916666666666667" />
         <entry key="..\:/Sandbox/Runner/app/src/main/res/layout/a_scene.xml" value="0.25416666666666665" />
         <entry key="..\:/Sandbox/Runner/app/src/main/res/layout/activity_introduction.xml" value="0.136" />
         <entry key="..\:/Sandbox/Runner/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/Sandbox/Runner/app/src/main/res/layout/activity_test.xml" value="0.25416666666666665" />
-        <entry key="..\:/Sandbox/Runner/app/src/main/res/layout/activity_timer.xml" value="0.17527173913043478" />
+        <entry key="..\:/Sandbox/Runner/app/src/main/res/layout/activity_timer.xml" value="0.176" />
         <entry key="..\:/Sandbox/Runner/app/src/main/res/layout/another_scene.xml" value="0.25416666666666665" />
         <entry key="..\:/Sandbox/Runner/app/src/main/res/layout/button_scene.xml" value="0.25416666666666665" />
         <entry key="..\:/Sandbox/Runner/app/src/main/res/layout/fragment_first.xml" value="0.264" />

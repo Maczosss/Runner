@@ -92,7 +92,7 @@ public class WeekPlanListFragment extends Fragment implements WeekPlanListAdapte
         audioList.setAdapter(weekPlanListAdapter);
 
         //decorations
-        audioList.addItemDecoration(new RecyclerListDecoration(10, 10));
+        audioList.addItemDecoration(new RecyclerListDecoration(25, 20));
         return rootView;
     }
 
