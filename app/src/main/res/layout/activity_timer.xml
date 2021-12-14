@@ -140,19 +140,4 @@
         app:layout_constraintEnd_toEndOf="@+id/runBanner"
         app:layout_constraintTop_toTopOf="@+id/walkBanner" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/testBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/round_button"
-        android:text="Reset"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toTopOf="@+id/startBtn"
-        app:layout_constraintEnd_toStartOf="@+id/resetBtn"
-        app:layout_constraintStart_toEndOf="@+id/startBtn"
-        app:layout_constraintTop_toBottomOf="@+id/textField" />
-
-
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

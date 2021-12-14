@@ -22,6 +22,7 @@ import androidx.core.app.NotificationCompat;
 
 import java.util.Locale;
 
+import listeners.ExitApp;
 import listeners.ProgressSaver;
 import plan.DayOfWeek;
 
@@ -53,11 +54,12 @@ public class TimerActivity extends AppCompatActivity {
     private boolean timerCounting;
     private long timeLeftInMillis = START_TIME_FOR_WALK_IN_MILLIS;
     private ImageView walkBanner, runBanner;
+    private ExitApp exitApp;
 
     private ActivityType activityType = ActivityType.WALK;
 
     private Button startBtn;
-    private Button resetBtn, testBtn;
+    private Button resetBtn;
     private TextView textView, runText, walkText;
 
     boolean isRetracted = false;
@@ -79,7 +81,6 @@ public class TimerActivity extends AppCompatActivity {
         this.resetBtn = findViewById(R.id.resetBtn);
         this.walkBanner = findViewById(R.id.walkBanner);
         this.runBanner = findViewById(R.id.runBanner);
-        this.testBtn = findViewById(R.id.testBtn);
         this.runText = findViewById(R.id.runText);
         this.walkText = findViewById(R.id.walkText);
 
@@ -233,12 +234,6 @@ public class TimerActivity extends AppCompatActivity {
         //resetBtn.setVisibility(View.INVISIBLE);
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-
-        System.out.println("ending choooo");
-    }
 
     private void showWalkBanner() {
         walkBanner.animate().translationXBy(1000).setDuration(1500).alpha(1).start();
@@ -287,5 +282,18 @@ public class TimerActivity extends AppCompatActivity {
         PendingIntent resultPendingIntent = stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
         builder.setContentIntent(resultPendingIntent);
         notificationManager.notify(NOTIFICATION_ID, builder.build());
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (exitApp == null) {
+            exitApp = new ExitApp(this);
+            return;
+        }
+        if (exitApp.checkIfExit(this)) {
+            return;
+        }
+        finish();
+        onDestroy();
     }
 }

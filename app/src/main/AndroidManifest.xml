@@ -11,17 +11,22 @@
         android:theme="@style/Theme.Runner">
         <activity
             android:name=".IntroductionActivity"
-            android:exported="false" />
-        <activity android:name=".TimerActivity" />
-        <activity android:name="fragments.WeekPlanListFragment"/>
-        <activity android:name=".MainActivity">
+            android:excludeFromRecents="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".TestActivity" />
+        <activity
+            android:name=".TimerActivity"
+            android:excludeFromRecents="true" />
+        <activity
+            android:name="fragments.WeekPlanListFragment"
+            android:excludeFromRecents="true" />
+        <activity
+            android:name=".TestActivity"
+            android:excludeFromRecents="true" />
     </application>
 
 </manifest>

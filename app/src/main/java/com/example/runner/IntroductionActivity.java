@@ -2,6 +2,7 @@ package com.example.runner;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Window;
 import android.view.animation.Animation;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -16,9 +17,9 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.airbnb.lottie.LottieAnimationView;
 
-import fragments.FirstFragment;
-import fragments.ThirdFragment;
+import fragments.StartRunningFragment;
 import fragments.WeekPlanListFragment;
+import fragments.WelcomeFragment;
 import listeners.ExitApp;
 import listeners.ProgressSaver;
 import plan.WeeksPlan;
@@ -53,8 +54,14 @@ public class IntroductionActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_introduction);
+
+        //progresssver
+        ProgressSaver.initInstance(this.getExternalFilesDir("/").getAbsolutePath());
+        ProgressSaver progressSaver = ProgressSaver.getInstance();
+        //
 
         background = findViewById(R.id.backgroundIntroduction);
         name = findViewById(R.id.nameLogo);
@@ -125,14 +132,13 @@ public class IntroductionActivity extends AppCompatActivity {
         public Fragment getItem(int position) {
             switch (position) {
                 case 0:
-                    FirstFragment tab1 = new FirstFragment();
+                    WelcomeFragment tab1 = new WelcomeFragment();
                     return tab1;
                 case 1:
-//                    SecondFragment tab2 = new SecondFragment();
-                    WeekPlanListFragment tab2 = new WeekPlanListFragment();
+                    StartRunningFragment tab2 = new StartRunningFragment();
                     return tab2;
                 case 2:
-                    ThirdFragment tab3 = new ThirdFragment();
+                    WeekPlanListFragment tab3 = new WeekPlanListFragment();
                     return tab3;
                 default:
                     return new Fragment();
@@ -154,13 +160,10 @@ public class IntroductionActivity extends AppCompatActivity {
         if (exitApp.checkIfExit(this)) {
             return;
         }
+        finish();
         onDestroy();
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-    }
 }
 
 //        try {

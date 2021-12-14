@@ -102,6 +102,7 @@ public class WeekPlanListFragment extends Fragment implements WeekPlanListAdapte
         ProgressSaver.getInstance().setCurrentDayOfWeek(item.getDayNumber());
         Intent intent = new Intent(getContext(), TimerActivity.class);
         startActivity(intent);
+        getActivity().finish();
     }
 
 
