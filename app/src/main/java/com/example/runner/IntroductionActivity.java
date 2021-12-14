@@ -19,6 +19,7 @@ import com.airbnb.lottie.LottieAnimationView;
 import fragments.FirstFragment;
 import fragments.ThirdFragment;
 import fragments.WeekPlanListFragment;
+import listeners.ExitApp;
 import listeners.ProgressSaver;
 import plan.WeeksPlan;
 
@@ -26,7 +27,7 @@ public class IntroductionActivity extends AppCompatActivity {
 
     ImageView background, name, name2;
     LottieAnimationView lottie;
-//    private Button startBtn, chooseBtn;
+    //    private Button startBtn, chooseBtn;
     TextView infoAboutCurrentWorkout;
     ProgressSaver saver = ProgressSaver.getInstance();
 
@@ -45,6 +46,7 @@ public class IntroductionActivity extends AppCompatActivity {
     ListView listOfPlans;
 
     Fragment fragment;
+    ExitApp exitApp;
 
     private static final int CONTENT_VIEW_ID = 10101010;
 
@@ -68,8 +70,6 @@ public class IntroductionActivity extends AppCompatActivity {
 
         //todo animation is next
         //animation = AnimationUtils.loadAnimation(this, R.anim.animation);
-
-
 
 
 //        startBtn.setOnClickListener(v -> {
@@ -123,7 +123,7 @@ public class IntroductionActivity extends AppCompatActivity {
         @NonNull
         @Override
         public Fragment getItem(int position) {
-            switch (position){
+            switch (position) {
                 case 0:
                     FirstFragment tab1 = new FirstFragment();
                     return tab1;
@@ -144,4 +144,36 @@ public class IntroductionActivity extends AppCompatActivity {
             return NUMBER_OF_FRAGMENTS;
         }
     }
+
+    @Override
+    public void onBackPressed() {
+        if (exitApp == null) {
+            exitApp = new ExitApp(this);
+            return;
+        }
+        if (exitApp.checkIfExit(this)) {
+            return;
+        }
+        onDestroy();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+    }
 }
+
+//        try {
+//        Intent intent = getIntent();
+//        finish();
+//        startActivity(intent);
+//        if(ProgressSaver.getBackIteration()==2) {
+//            Toast.makeText(getApplicationContext(),
+//                    "Press again to leave",
+//                    Toast.LENGTH_LONG).show();
+//        }
+//    } catch (IllegalStateException e) {
+//        Toast.makeText(getApplicationContext(),
+//                "there is an error " + e.getLocalizedMessage(),
+//                Toast.LENGTH_LONG).show();
+//    }
