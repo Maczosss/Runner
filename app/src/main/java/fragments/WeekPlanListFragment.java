@@ -92,7 +92,7 @@ public class WeekPlanListFragment extends Fragment implements WeekPlanListAdapte
         audioList.setAdapter(weekPlanListAdapter);
 
         //decorations
-        audioList.addItemDecoration(new RecyclerListDecoration(10, 10));
+        audioList.addItemDecoration(new RecyclerListDecoration(25, 20));
         return rootView;
     }
 
@@ -102,6 +102,7 @@ public class WeekPlanListFragment extends Fragment implements WeekPlanListAdapte
         ProgressSaver.getInstance().setCurrentDayOfWeek(item.getDayNumber());
         Intent intent = new Intent(getContext(), TimerActivity.class);
         startActivity(intent);
+        getActivity().finish();
     }
 
 

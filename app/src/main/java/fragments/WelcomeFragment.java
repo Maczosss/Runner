@@ -15,7 +15,7 @@ import com.example.runner.R;
 
 import listeners.ProgressSaver;
 
-public class FirstFragment extends Fragment {
+public class WelcomeFragment extends Fragment {
 
     ImageView background;
 

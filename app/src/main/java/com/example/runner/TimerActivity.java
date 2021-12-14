@@ -10,16 +10,19 @@ import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.widget.ImageButton;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.content.res.AppCompatResources;
 import androidx.core.app.NotificationCompat;
 
 import java.util.Locale;
 
+import listeners.ExitApp;
 import listeners.ProgressSaver;
 import plan.DayOfWeek;
 
@@ -50,12 +53,17 @@ public class TimerActivity extends AppCompatActivity {
     private CountDownTimer countDownTimer;
     private boolean timerCounting;
     private long timeLeftInMillis = START_TIME_FOR_WALK_IN_MILLIS;
+    private ImageView walkBanner, runBanner;
+    private ExitApp exitApp;
 
-    private ActivityType activityType = ActivityType.RUN;
+    private ActivityType activityType = ActivityType.WALK;
 
-    private ImageButton startBtn;
-    private ImageButton resetBtn;
-    private TextView textView;
+    private Button startBtn;
+    private Button resetBtn;
+    private TextView textView, runText, walkText;
+
+    boolean isRetracted = false;
+
 
     //todo name of file for storing data
 //    private ProgressSaver progressSaver =
@@ -71,28 +79,49 @@ public class TimerActivity extends AppCompatActivity {
         this.startBtn = findViewById(R.id.startBtn);
         this.textView = findViewById(R.id.textField);
         this.resetBtn = findViewById(R.id.resetBtn);
+        this.walkBanner = findViewById(R.id.walkBanner);
+        this.runBanner = findViewById(R.id.runBanner);
+        this.runText = findViewById(R.id.runText);
+        this.walkText = findViewById(R.id.walkText);
+
+
+        //slidebars from left to right with taxts, it's all starting from walk
+        runBanner.animate().translationXBy(1000).setDuration(1500).alpha(0).start();
+        walkText.animate().alpha(1).setDuration(1500).start();
+
 
         textView.setText("Number of intervals: " + numberOfSeries
                 + "\nrunning for: " + (START_TIME_FOR_RUN_IN_MILLIS / 1000) / 60
                 + "\nwalking time: " + (START_TIME_FOR_WALK_IN_MILLIS / 1000) % 60);
 
+        //+++++++++++++++++++++++++++++++++++++
+
+//for test button
+        //=====================================
+
         startBtn.setOnClickListener(v -> {
             if (timerCounting) {
                 pauseTimer();
-                startBtn.setImageDrawable(getResources().getDrawable(R.drawable.play, null));
+                startBtn.setText("Start");
+                startBtn.setBackground(
+                        AppCompatResources.getDrawable(
+                                this.getApplicationContext(),
+                                R.drawable.round_button));
             } else {
                 sendNotification(activityType.getType(),
                         String.format("Now You have to: %s for %s min",
                                 activityType.getType(),
                                 timer.getText().toString()));
                 startTimer();
-                startBtn.setImageDrawable(getResources().getDrawable(R.drawable.pause, null));
+                startBtn.setText("Pause");
+                startBtn.setBackground(
+                        AppCompatResources.getDrawable(
+                                this.getApplicationContext(),
+                                R.drawable.round_button_selected_red));
             }
-//            sendNotification("","");
         });
 
         resetBtn.setOnClickListener(v -> {
-//            sendNotification("","");
             if (timerCounting) {
                 Toast.makeText(this, "First, pause the counter", Toast.LENGTH_LONG).show();
             } else {
@@ -104,8 +133,6 @@ public class TimerActivity extends AppCompatActivity {
     }
 
     public void startTimer() {
-//        for (int i = numberOfSeries; i < 0; i--) {
-
         countDownTimer = new CountDownTimer(timeLeftInMillis, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
@@ -118,8 +145,10 @@ public class TimerActivity extends AppCompatActivity {
 
                 timerCounting = false;
                 if (activityType == ActivityType.RUN) {
+                    showWalkBanner();
                     activityType = ActivityType.WALK;
                 } else {
+                    showRunBanner();
                     activityType = ActivityType.RUN;
                 }
                 resetTimer();
@@ -133,6 +162,11 @@ public class TimerActivity extends AppCompatActivity {
                     startTimer();
                 else {
                     sendNotification("Finish", "Training finished");
+                    startBtn.setText("Start");
+                    startBtn.setBackground(
+                            AppCompatResources.getDrawable(
+                                    getApplicationContext(),
+                                    R.drawable.round_button));
                     saveProgress();
                     resetData();
                 }
@@ -162,8 +196,16 @@ public class TimerActivity extends AppCompatActivity {
     public void updateCountDown() {
         int minutes = (int) (timeLeftInMillis / 1000) / 60;
         int seconds = (int) (timeLeftInMillis / 1000) % 60;
+        String timeLeftMinutes = "%2d";
+        String timeLeftSeconds = "%2d";
+        if (minutes < 10) {
+            timeLeftMinutes = "0%d";
+        }
+        if (seconds < 10) {
+            timeLeftSeconds = "0%d";
+        }
 
-        String timeLeft = String.format(Locale.getDefault(), "%2d:%2d", minutes, seconds);
+        String timeLeft = String.format(Locale.getDefault(), timeLeftMinutes + ":" + timeLeftSeconds, minutes, seconds);
         timer.setText(timeLeft);
     }
 
@@ -192,11 +234,19 @@ public class TimerActivity extends AppCompatActivity {
         //resetBtn.setVisibility(View.INVISIBLE);
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
 
-        System.out.println("ending choooo");
+    private void showWalkBanner() {
+        walkBanner.animate().translationXBy(1000).setDuration(1500).alpha(1).start();
+        runBanner.animate().translationXBy(1000).setDuration(1500).alpha(0).start();
+        walkText.animate().alpha(1).setDuration(1500).start();
+        runText.animate().alpha(0).setDuration(1500).start();
+    }
+
+    private void showRunBanner() {
+        walkBanner.animate().translationXBy(-1000).setDuration(1500).alpha(0).start();
+        runBanner.animate().translationXBy(-1000).setDuration(1500).alpha(1).start();
+        walkText.animate().alpha(0).setDuration(1500).start();
+        runText.animate().alpha(1).setDuration(1500).start();
     }
 
     private void sendNotification(String title, String message) {
@@ -232,5 +282,18 @@ public class TimerActivity extends AppCompatActivity {
         PendingIntent resultPendingIntent = stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
         builder.setContentIntent(resultPendingIntent);
         notificationManager.notify(NOTIFICATION_ID, builder.build());
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (exitApp == null) {
+            exitApp = new ExitApp(this);
+            return;
+        }
+        if (exitApp.checkIfExit(this)) {
+            return;
+        }
+        finish();
+        onDestroy();
     }
 }

@@ -9,6 +9,8 @@
     <color name="white">#FFFFFFFF</color>
     <color name="colorPrimary">#064e88</color>
     <color name="colorDarkBlue">#063970</color>
+    <color name="timerBlue">#031AFF</color>
+    <color name="timerBlueShadow">#03E0FF</color>
     <color name="menuRed">#e6070e</color>
     <color name="colorDarkPrimary">#2c5276</color>
     <color name="grey">#979797</color>

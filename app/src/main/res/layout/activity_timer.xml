@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/black"
     tools:context=".TimerActivity">
 
     <TextView
@@ -28,38 +29,115 @@
         android:id="@+id/timer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/open_sans_light"
-        android:text="00:00"
-        android:textColor="@color/colorDarkBlue"
-        android:textSize="64sp"
         android:layout_marginBottom="300dp"
+        android:elevation="100dp"
+        android:fontFamily="@font/open_sans_light"
+        android:shadowColor="@color/timerBlueShadow"
+        android:shadowDx="10"
+        android:shadowDy="10"
+        android:shadowRadius="20"
+        android:text="00:00"
+        android:textColor="@color/timerBlue"
+        android:textSize="64sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageButton
-        android:id="@+id/startBtn"
-        android:layout_width="104dp"
-        android:layout_height="97dp"
-        android:layout_marginTop="50dp"
-        android:background="@color/white"
-        android:scaleType="fitCenter"
-        android:src="@drawable/play"
-        app:layout_constraintEnd_toStartOf="@+id/resetBtn"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textField" />
+    <!--    <ImageButton-->
+    <!--        android:id="@+id/startBtn"-->
+    <!--        android:layout_width="104dp"-->
+    <!--        android:layout_height="97dp"-->
+    <!--        android:layout_marginTop="50dp"-->
+    <!--        android:background="@color/white"-->
+    <!--        android:scaleType="fitCenter"-->
+    <!--        android:src="@drawable/play"-->
+    <!--        app:layout_constraintEnd_toStartOf="@+id/resetBtn"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toBottomOf="@id/textField" />-->
 
-    <ImageButton
+    <!--    <ImageButton-->
+    <!--        android:id="@+id/resetBtn"-->
+    <!--        android:layout_width="104dp"-->
+    <!--        android:layout_height="97dp"-->
+    <!--        android:layout_marginTop="50dp"-->
+    <!--        android:background="@color/white"-->
+    <!--        android:scaleType="fitCenter"-->
+    <!--        android:src="@drawable/reset"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintStart_toEndOf="@id/startBtn"-->
+    <!--        app:layout_constraintTop_toBottomOf="@+id/textField"/>-->
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/startBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="50dp"
+        android:background="@drawable/round_button"
+        android:text="Start"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/resetBtn"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/resetBtn"
-        android:layout_width="104dp"
-        android:layout_height="97dp"
-        android:layout_marginTop="50dp"
-        android:background="@color/white"
-        android:scaleType="fitCenter"
-        android:src="@drawable/reset"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="50dp"
+        android:background="@drawable/round_button"
+        android:text="Reset"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/startBtn"
-        app:layout_constraintTop_toBottomOf="@+id/textField"/>
+        app:layout_constraintStart_toEndOf="@+id/startBtn" />
+
+    <ImageView
+        android:id="@+id/walkBanner"
+        android:layout_width="0dp"
+        android:layout_height="100sp"
+        android:src="@color/menuRed"
+        android:alpha="1"
+        app:layout_constraintBottom_toBottomOf="@+id/timer"
+        app:layout_constraintEnd_toEndOf="@+id/timer"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/timer"/>
+
+    <ImageView
+        android:id="@+id/runBanner"
+        android:layout_width="0dp"
+        android:layout_height="100sp"
+        android:src="@color/teal_200"
+        android:alpha="0"
+        app:layout_constraintBottom_toBottomOf="@+id/timer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/timer"
+        app:layout_constraintTop_toTopOf="@+id/timer"/>
+
+    <TextView
+        android:id="@+id/walkText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:alpha="0"
+        android:text="WALK"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/walkBanner"
+        app:layout_constraintStart_toStartOf="@+id/walkBanner"
+        app:layout_constraintTop_toTopOf="@+id/walkBanner" />
+
+    <TextView
+        android:id="@+id/runText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:text="RUN"
+        android:alpha="0"
+        android:textColor="@color/menuRed"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/walkBanner"
+        app:layout_constraintEnd_toEndOf="@+id/runBanner"
+        app:layout_constraintTop_toTopOf="@+id/walkBanner" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

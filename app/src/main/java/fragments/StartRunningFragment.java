@@ -11,7 +11,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.runner.R;
 
-public class ThirdFragment extends Fragment {
+public class StartRunningFragment extends Fragment {
 
     @Nullable
     @Override
