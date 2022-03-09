@@ -30,7 +30,7 @@ allprojects {
                     username = githubProperties['gpr.usr'] ?: System.getenv("GPR_USER")
                     password = githubProperties['gpr.key'] ?: System.getenv("GPR_API_KEY")**/
                     username = '42513494'
-                    password = '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'
+                    password = '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'
                 }
             }
         }

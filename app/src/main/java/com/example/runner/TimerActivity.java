@@ -28,9 +28,10 @@ import plan.DayOfWeek;
 
 public class TimerActivity extends AppCompatActivity {
     //for testing
-    private static final long START_TIME_FOR_RUN_IN_MILLIS = 5000; // 5 seconds sec3
-    private static final long START_TIME_FOR_WALK_IN_MILLIS = 10000; //10 seconds sec9
-    private int numberOfSeries = 4;
+    //bieg 1 minuta krok 5 min
+//    private static final long START_TIME_FOR_RUN_IN_MILLIS = 5000; // 5 seconds sec3
+//    private static final long START_TIME_FOR_WALK_IN_MILLIS = 10000; //10 seconds sec9
+//    private int numberOfSeries = 4;
     //
 
     private DayOfWeek dayOfWeek =
@@ -43,10 +44,10 @@ public class TimerActivity extends AppCompatActivity {
                                     .getInstance()
                                     .getCurrentDayOfWeek());
 
-//    private final long START_TIME_FOR_RUN_IN_MILLIS = dayOfWeek.getTimeToRun(); // 1 minute sec3
-//    private final long START_TIME_FOR_WALK_IN_MILLIS = dayOfWeek.getTimeToWalk(); //5 minutes sec9
-//    private final int BASE_NUMBER_OF_SERIES = dayOfWeek.getNumberOfIntervals();
-//    private int numberOfSeries = BASE_NUMBER_OF_SERIES * 2;//multiplayng becouse it decreased for every action, not after walk and run
+    private final long START_TIME_FOR_RUN_IN_MILLIS = dayOfWeek.getTimeToRun(); // 1 minute sec3
+    private final long START_TIME_FOR_WALK_IN_MILLIS = dayOfWeek.getTimeToWalk(); //5 minutes sec9
+    private final int BASE_NUMBER_OF_SERIES = dayOfWeek.getNumberOfIntervals();
+    private int numberOfSeries = BASE_NUMBER_OF_SERIES * 2;//multiplayng becouse it decreased for every action, not after walk and run
 
 
     private TextView timer;
@@ -93,11 +94,6 @@ public class TimerActivity extends AppCompatActivity {
         textView.setText("Number of intervals: " + numberOfSeries
                 + "\nrunning for: " + (START_TIME_FOR_RUN_IN_MILLIS / 1000) / 60
                 + "\nwalking time: " + (START_TIME_FOR_WALK_IN_MILLIS / 1000) % 60);
-
-        //+++++++++++++++++++++++++++++++++++++
-
-//for test button
-        //=====================================
 
         startBtn.setOnClickListener(v -> {
             if (timerCounting) {
